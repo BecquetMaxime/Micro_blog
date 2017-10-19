@@ -5,9 +5,19 @@ include('includes/connexion.php');
 
 if(isset($_POST['email']))
 {
+    // Utili ok? ( where email=:email and mdp=:mdp)
     
     
+$sql="SELECT * FROM utilisateur WHERE email=:email AND password=:password";
+$prep=$pdo->prepare($sql);
+$prep->bindValue(':email', $_POST['email']);
+$prep->bindValue(':password', $_POST['password']);
+$prep->execute();
     
+    //$sid=mdS($__post['email'] time())
+    //MAJ BDD ( UPDATE utilisateur SET sid=sid where email=email)
+    // creation cookie
+    // redirection
     
 }
 
