@@ -1,32 +1,3 @@
-<?php 
-include('includes/haut.php');
-include('includes/connexion.php');
-
-
-if(isset($_POST['email']))
-{
-    // Utili ok? ( where email=:email and mdp=:mdp)
-    
-    
-$sql="SELECT * FROM utilisateur WHERE email=:email AND password=:password";
-$prep=$pdo->prepare($sql);
-$prep->bindValue(':email', $_POST['email']);
-$prep->bindValue(':password', $_POST['password']);
-$prep->execute();
-    
-    //$sid=mdS($__post['email'] time())
-    //MAJ BDD ( UPDATE utilisateur SET sid=sid where email=email)
-    // creation cookie
-    // redirection
-    
-}
-
-
-
-
-
-
-?>
 
 
     <header>
@@ -53,8 +24,18 @@ $prep->execute();
                     <div class="col-sm-10">  
                         <div class="form-group">
                             
-                            <?php
-                            $sql="SELECT * FROM messages WHERE id=:id";
+<?php
+include('includes/haut.php');
+include('includes/connexion.php');
+
+    // Utili ok? ( where email=:email and mdp=:mdp)
+ 
+/* WHERE email='{$email}' AND password='{$password}' */       
+$sql="SELECT * FROM utilisateur";
+$prep=$pdo->query($sql);
+$prep->fetchAll();
+print_r($prep);
+
                             
 
                            echo "<input type='email' id='email' name='email' class='form-control' placeholder='email'>
@@ -62,11 +43,27 @@ $prep->execute();
                             echo "</br>";
                             echo "<input type='password' id='password' name='password' class='form-control' placeholder='password'>
                            </input>";
-                            
+                            echo "<input type='checkbox' id='check' name='check'> Se souvenir de moi </input>";
                             echo "</br>";
-                            echo "<button type='submit' class='btn btn-success btn-lg'>Envoyer</button>"
-                            ?>
+                            echo "<button type='submit' class='btn btn-success btn-lg'>Envoyer</button>";
                             
+    
+
+  
+    /* //md5($_POST['email'].time())
+    $sid=md5($_POST['email'].time());
+    //MAJ BDD ( UPDATE utilisateur SET sid=sid where email=email)
+   $sqll="UPDATE utilisateur SET sid={$sid} WHERE email={$_POST['email']}";
+    $prep=$pdo->prepare($sqll);
+    $prep->execute();
+    // creation cookie
+    // redirection
+    
+           */       
+
+                           
+                            
+                ?>
                         </div>
                     </div>
                                     
@@ -74,8 +71,7 @@ $prep->execute();
             </div>
 
             
-            
-
+           
 
 
 
@@ -83,5 +79,6 @@ $prep->execute();
 
 <?php
 include('includes/bas.php');
+            
 
 ?>

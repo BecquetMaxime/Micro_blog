@@ -52,6 +52,21 @@
                     </li>
                     <li class="page-scroll">
                         <a href="connect.php">Connexion</a>
+                        
+                <?php
+                        
+                /* setcookie("name","{$_POST['email']}");                  
+                echo "<h3>Connexion sous : </h3>";
+                if(isset($_COOKIE['name'])){
+                echo "<p> {$_COOKIE["name"]}</p>";
+                
+                
+            }
+            unset($_COOKIE["name"]);  
+                        */
+                        ?>
+                        
+                        
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
