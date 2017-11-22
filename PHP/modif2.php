@@ -1,6 +1,8 @@
 <?php 
 include('includes/haut.php');
 include('includes/connexion.php');
+session_start();
+
 ?>
     
 
@@ -28,15 +30,22 @@ include('includes/connexion.php');
                     <div class="col-sm-10">  
                         <div class="form-group">
                             
-                            <?php
-                            $sql="SELECT * FROM messages WHERE id=:id";
-                            
+    <?php
 
-                           echo "<textarea id='message' name='message' class='form-control' placeholder='Message'> </textarea>";
-                            echo "<input type='hidden' name='id' value=>";
-                            
-                            
-                            ?>
+        $modifier=$_GET['id'];
+        $sql="SELECT * FROM messages WHERE id=$modifier";
+        $stmt=$pdo->query($sql);
+        $data=$stmt->fetch();
+        echo "<textarea id='message' name='message' class='form-control' placeholder='Message'>{$data['contenu']}</textarea>";
+
+        $sql="SELECT * FROM messages WHERE id=$modifier";
+        $stmt=$pdo->query($sql);                     
+        $sql="DELETE FROM messages WHERE id=$modifier";
+        $stmt=$pdo->query($sql);                                     
+        echo "<input type='hidden' name='id' value=>";
+
+
+     ?>
                             
                         </div>
                     </div>
@@ -56,7 +65,7 @@ include('includes/connexion.php');
     
     while($data=$stmt->fetch()){
         $suppr=$data['id'];
-         $modifier=$data['id'];
+        $modifier=$data['id'];
         echo "<blockquote>";
         echo $data['contenu'];
         echo "</br>";
@@ -67,7 +76,7 @@ include('includes/connexion.php');
         echo "</footer>";
         echo "</blockquote>";
         
-          echo "<a href='modif2.php?b=mod&id=$modifier'class='btn btn-primary' >Modifier</a> ";
+          echo "<a href='modifier.php?b=sup&id=$modifier'class='btn btn-primary' >Modifier</a> ";
         
         
         echo "<a href='supprimer.php?a=sup&id=$suppr'class='btn btn-danger' >Supprimer</a> ";
@@ -80,7 +89,7 @@ include('includes/connexion.php');
             
             
             
-        
+            
             
             <div class="row">
                 <div class="col-md-12">

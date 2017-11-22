@@ -30,12 +30,32 @@ include('includes/connexion.php');
 
     // Utili ok? ( where email=:email and mdp=:mdp)
  
-/* WHERE email='{$email}' AND password='{$password}' */       
+/* WHERE email='{$email}' AND password='{$password}' */ 
+                            
+                            
 $sql="SELECT * FROM utilisateur";
-$prep=$pdo->query($sql);
-$prep->fetchAll();
-print_r($prep);
+$stmt=$pdo->query($sql);
+                           
+   /*                         
+$sid=$data['email'].time();                            
+$sqll="UPDATE utilisateur SET sid=$sid WHERE email={$data['email']}";
+$prep=$pdo->query($sqll);
+                            
+                            
+$sql="SELECT * FROM utilisateur";
+$stmt=$pdo->query($sql);
+$data=$stmt->fetch();
+                            
+*/
+             
 
+while($data=$stmt->fetch()){
+    
+    echo $data['email'];
+    echo "</br>";
+    echo $data['sid'];
+    echo "</br>";
+}
                             
 
                            echo "<input type='email' id='email' name='email' class='form-control' placeholder='email'>
@@ -47,7 +67,7 @@ print_r($prep);
                             echo "</br>";
                             echo "<button type='submit' class='btn btn-success btn-lg'>Envoyer</button>";
                             
-    
+ 
 
   
     /* //md5($_POST['email'].time())
