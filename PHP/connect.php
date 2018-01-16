@@ -27,14 +27,32 @@
 <?php
 include('includes/haut.php');
 include('includes/connexion.php');
+session_start();
+if(isset($_POST['connex'])){
+	$_SESSION['username'] = $_POST['userid'];
+}
+if(isset($_POST['deco'])){
+	session_destroy();
+	header("Refresh:0");
+}
+                            
+if(isset($_SESSION['username'])){
+    	echo "<h1 class='bonjour'>Bonjour, ".$_SESSION['username']."</h1>";
+    	echo "<form action='index.php' method='POST' class='formul'><button class='deco' name='deco'>Se deconnecter </button></form>";
 
+    }
+        
+	if(!isset($_SESSION['username'])){   
+    echo "<form action='index.php' method='POST' class='formul'><input type='text' placeholder='adresse mail' name='userid' id='userid' class='userid'/><input type='password' placeholder='Mot de passe' name='pass' id='pass' class='pass' /><button class='connex' name='connex'>Se connecter </button></form>";
+    }                        
+                            
+                            
     // Utili ok? ( where email=:email and mdp=:mdp)
  
 /* WHERE email='{$email}' AND password='{$password}' */ 
                             
                             
-$sql="SELECT * FROM utilisateur";
-$stmt=$pdo->query($sql);
+
                            
    /*                         
 $sid=$data['email'].time();                            
@@ -47,16 +65,8 @@ $stmt=$pdo->query($sql);
 $data=$stmt->fetch();
                             
 */
-             
-
-while($data=$stmt->fetch()){
-    
-    echo $data['email'];
-    echo "</br>";
-    echo $data['sid'];
-    echo "</br>";
-}
-                            
+     
+                            /*
 
                            echo "<input type='email' id='email' name='email' class='form-control' placeholder='email'>
                            </input>";
@@ -67,7 +77,7 @@ while($data=$stmt->fetch()){
                             echo "</br>";
                             echo "<button type='submit' class='btn btn-success btn-lg'>Envoyer</button>";
                             
- 
+                            */
 
   
     /* //md5($_POST['email'].time())
