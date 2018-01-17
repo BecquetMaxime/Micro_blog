@@ -1,13 +1,13 @@
 # Microblog
 Fait :
-  _Poster un message
-  _Supprimer un message
-  _Modifier un message
-  _Afficher un message
-  _Pagination
-  _Recherche par mots clés
+    Poster un message
+    Supprimer un message
+    Modifier un message
+    Afficher un message
+    Pagination
+    Recherche par mots clés
 
-      Tout ca sur la page INDEX.HTML
+            Tout ca sur la page INDEX.HTML
 
 
 
