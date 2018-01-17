@@ -19,4 +19,4 @@ Pas fait :
  
  
  
-le includes/connexion.php --> connexion PDO
+Dans : includes/connexion.php --> connexion PDO
