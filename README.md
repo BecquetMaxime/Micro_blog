@@ -20,3 +20,8 @@ Pas fait :
  
  
 Dans : includes/connexion.php --> connexion PDO
+
+
+
+
+La partie JQUERY se trouve dans le dossier PHP2.zip.
